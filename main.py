@@ -21,6 +21,21 @@ def write_or_append_to_file(file_path: str, data: Union[Dict[str, Any], List[str
         # id,name,age,gender,address,phone_number,email
 
     # write your own logic here
+    def write_or_append_to_file(file_path, data, mode="w"):
+    # Check if the data is a list or dictionary
+        if not isinstance(data, (list, dict)):
+            raise TypeError("Only list or dictionary data types are supported.")
+
+        # Open the file in the given mode
+        with open(file_path, mode) as file:
+            if isinstance(data, list):
+                # Join the list items into a single line
+                file.write(",".join(data) + "\n")
+            elif isinstance(data, dict):
+                keys = ["id", "name", "age", "gender", "address", "phone_number", "email"]
+                
+                file.write(",".join(str(data.get(key, "")) for key in keys) + "\n")
+
 
 
 def read_all_lines(file_path: str, mode: str="r") -> str:
