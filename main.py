@@ -21,6 +21,48 @@ def write_or_append_to_file(file_path: str, data: Union[Dict[str, Any], List[str
         # id,name,age,gender,address,phone_number,email
 
     # write your own logic here
+    
+   # Function to write or append to a file (the one we defined earlier)
+
+
+    if isinstance(data, list):
+        with open(file_path, mode) as file:
+            file.write(",".join(map(str, data)) + "\n")
+    elif isinstance(data, dict):
+        required_keys = ["id", "name", "age", "gender", "address", "phone_number", "email"]
+        with open(file_path, mode) as file:
+            values = [data.get(key, "") for key in required_keys]
+            file.write(",".join(map(str, values)) + "\n")
+    else:
+        raise TypeError("data must be either a list or a dictionary")
+
+
+    # Example usage:
+
+    # 1. Define the file path
+    file_path = 'user1_data.csv'
+
+    # 2. Create a list to write (this is just an example)
+    user_list = ['wilson', 'Abena', 'jackson']
+
+    # 3. Create a dictionary to write (this is also an example)
+    user_info = {
+    'id': '001',
+    'name': 'wil d',
+    'age': 3,
+    'gender': 'Male',
+    'address': 'orange street',
+    'phone_number': '0543310512',
+    'email': 'wil.d@gmail.com'
+}
+
+    # 4. Write or append data to the file
+
+    # Write the list to the file in comma-separated format
+    write_or_append_to_file(file_path, user_list, 'w')  # Overwrites the file initially
+
+    # Append the dictionary (user_info) to the same file
+    write_or_append_to_file(file_path, user_info, 'a')  # Appends to the file
 
 
 def read_all_lines(file_path: str, mode: str="r") -> str:
