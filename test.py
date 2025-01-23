@@ -1,7 +1,7 @@
 import unittest
 from unittest import TestCase
 
-from results import write_or_append_to_file, read_all_lines, read_lines
+from main import write_or_append_to_file, read_all_lines, read_lines
 from records import KEYS, PATIENTS_DATA
 
 
