@@ -46,7 +46,7 @@ def read_lines(file_path, mode: str="r", lines: int=1, skip_line:int=0) -> List[
 
     :return: list of lines read
     """
-    return []  # write your own logic here
+    return ["Hello, world"]  # write your own logic here
 
 
 def count_lines_in_file(file_path, mode="r") -> int:
