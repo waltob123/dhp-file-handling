@@ -7,7 +7,6 @@ def write_or_append_to_file(
    
     if not isinstance(data, (list, dict)):
         raise TypeError("Data must be of type list or dictionary")
-
     with open(file_path, mode, newline='') as file:
         if isinstance(data, list):
             file.write(",".join(data) + "\r\n")
